@@ -6,7 +6,7 @@ namespace ConsoleApp18_OOP04
 {
     internal class DeliveryCenter
     {
-        private Shipment[] Shipment = new Shipment[20];
+        private Shipment[] Shipments = new Shipment[20];
 
         public Driver Driver { get; set; }
         private string centerName;
@@ -29,7 +29,7 @@ namespace ConsoleApp18_OOP04
             {
 
                 if (index >= 0 && index < Shipment.Length)
-                    return Shipment[index];
+                    return Shipments[index];
 
                 return null;
 
@@ -41,8 +41,8 @@ namespace ConsoleApp18_OOP04
             set
             {
 
-                if (index >= 0 && index < Shipment.Length)
-                    Shipment[index] = value;
+                if (index >= 0 && index < Shipments.Length)
+                    Shipments[index] = value;
 
 
 
@@ -63,7 +63,7 @@ namespace ConsoleApp18_OOP04
             get
             {
 
-                foreach (var s in Shipment)
+                foreach (var s in Shipments)
 
 
                 {
@@ -77,11 +77,11 @@ namespace ConsoleApp18_OOP04
         }
         public bool AddShipment(Shipment shipment)
         {
-            for (int i = 0; i < Shipment.Length; i++)
+            for (int i = 0; i < Shipments.Length; i++)
             {
-                if (Shipment[i] == null)
+                if (Shipments[i] == null)
                 {
-                    Shipment[i] = shipment;
+                    Shipments[i] = shipment;
                     return true;
                 }
 
@@ -99,13 +99,13 @@ namespace ConsoleApp18_OOP04
         {
 
 
-            for (int i = 0; i < Shipment.Length; i++)
+            for (int i = 0; i < Shipments.Length; i++)
 
             {
 
-                if (Shipment[i] != null && Shipment[i].trackingCode == TrackingCode)
+                if (Shipments[i] != null && Shipments[i].trackingCode == TrackingCode)
                 {
-                    Shipment[i] = null;
+                    Shipments[i] = null;
                     return true;
                 }
 
@@ -119,20 +119,36 @@ namespace ConsoleApp18_OOP04
         {
 
 
-            for (int i = 0; i < Shipment.Length; i++)
+            for (int i = 0; i < Shipments.Length; i++)
             {
-                if (Shipment[i] != null)
+                if (Shipments[i] != null)
                 {
-                    Shipment[i].PrintShipment();
+                    Shipments[i].PrintShipment();
                 }
             }
         }
-
-
-
-
-
+        
+           public void PrintTrackingStatuses()
+        {
+            foreach (ITrackable t in Shipments)
+            {
+                t.GetTrackingStatus();
+            }
+        }
+        public void PrintCalculateInsurance()
+        {
+            foreach(IInsurable I in Shipments)
+            {
+                I.CalculateInsurance();
+            }
+        }
     }
+
+
+
+
+
+}
 
 
 
