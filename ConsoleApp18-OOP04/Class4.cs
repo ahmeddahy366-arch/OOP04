@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static ConsoleApp18_OOP04.Class1;
+using static ConsoleApp18_OOP04.Class1
 
 namespace ConsoleApp18_OOP04
 {
-    internal class ExpressShipment : Shipment
+    internal class ExpressShipment : Shipment,ITrackable, IInsurable
 
     {
         public ExpressShipment(string trackingCode, string description, decimal weight, decimal deliveryFee, decimal express, DeliveryAddress destination)
@@ -36,7 +36,7 @@ namespace ConsoleApp18_OOP04
             get
             {
 
-                return base.EstimatedCost + Express;
+                return deliveryFee + Express;
             }
         }
 
@@ -46,8 +46,19 @@ namespace ConsoleApp18_OOP04
 
         public override void PrintShipment()
         {
-            base.PrintShipment();
+            Console.WriteLine($"Tracking Code: {TrackingCode}, Cost: {EstimatedCost}");
             Console.WriteLine($"Extra Fee: {express}");
+        }
+
+        public string GetTrackingStatus()
+        {
+            return $"Shipment {TrackingCode} is currently in transit.";
+
+        }
+
+        public decimal CalculateInsurance()
+        {
+            return EstimatedCost * 0.08m;
         }
     }
 

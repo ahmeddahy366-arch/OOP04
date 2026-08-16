@@ -6,10 +6,10 @@ using static ConsoleApp18_OOP04.Class1;
 namespace ConsoleApp18_OOP04
 {
 
-    internal class Shipment
+    internal abstract class Shipment
     {
-        private string TrackingCode;
-        private string Description;
+        public string TrackingCode;
+        public string Description;
         private decimal Weight;
         private decimal DeliveryFee;
         private DeliveryAddress _destination;
@@ -113,11 +113,7 @@ namespace ConsoleApp18_OOP04
             }
         }
 
-        public virtual decimal EstimatedCost
-        {
-            get { return deliveryFee + (wight * 5); }
-
-        }
+        public abstract decimal EstimatedCost{get; }
 
 
         public void UpdateWeight(decimal newWeight)
@@ -165,10 +161,8 @@ namespace ConsoleApp18_OOP04
 
         }
 
-        public virtual void PrintShipment()
-        {
-            Console.WriteLine($"Tracking Code: {trackingCode}, Description: {description}, Weight: {wight}, Delivery Fee: {deliveryFee}, Estimated Cost: {EstimatedCost}, Destination: {Destination.GetFullAddress()}");
-        }
+        public abstract void PrintShipment();
+        
 
     }
 }
