@@ -8,8 +8,8 @@ namespace ConsoleApp18_OOP04
 
     internal abstract class Shipment
     {
-        private string TrackingCode;
-        private string Description;
+        public string TrackingCode;
+        public string Description;
         private decimal Weight;
         private decimal DeliveryFee;
         private DeliveryAddress _destination;

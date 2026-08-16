@@ -4,8 +4,7 @@ using System.Text;
 
 namespace ConsoleApp18_OOP04
 {
-    internal class Class1
-    {
+   
         public struct DeliveryAddress
         {
             public string City;
@@ -24,4 +23,4 @@ namespace ConsoleApp18_OOP04
             }
         }
     }
-}
+
