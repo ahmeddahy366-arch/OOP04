@@ -6,7 +6,7 @@ using static ConsoleApp18_OOP04.Class1;
 namespace ConsoleApp18_OOP04
 {
 
-    internal class Shipment
+    internal abstract class Shipment
     {
         private string TrackingCode;
         private string Description;
